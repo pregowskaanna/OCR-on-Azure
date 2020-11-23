@@ -1,16 +1,16 @@
 # OCR-on-Azure
 
 ## Co trzeba zrobić:
-Opis projektu
-Funkcjonalności
-Architektura
-Organizacja pracy - kamienie milowe, scrum
+Opis projektu  
+Funkcjonalności  
+Architektura  
+Organizacja pracy - kamienie milowe, scrum  
 
 ## Funkcjonalności:
-Utworzenie konta użytwnika
-Obługa logowania i przechowywania plików wcześniej przetwarzanych
-Wgranie pliku wejściowego - zdjęcia/pdf z danymi tekstowymi w formie graficznej
-Wyświetlenie tesktu rozpoznanego z pliku wejściowego
+Utworzenie konta użytwnika  
+Obługa logowania i przechowywania plików wcześniej przetwarzanych  
+Wgranie pliku wejściowego - zdjęcia/pdf z danymi tekstowymi w formie graficznej  
+Wyświetlenie tesktu rozpoznanego z pliku wejściowego  
 
 ## Architektura:
 Aplikacja webowa działająca w kontenerze Docker (zapisana w Github), w wirtualnej sieci Azure, z bazą danych (?), weryfikacja użytkownika przez Azure Key Vault.
