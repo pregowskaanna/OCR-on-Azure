@@ -14,13 +14,15 @@ Projekt zostanie zrealizowany z użyciem języka Python w wersji 3 i frameworka 
 Aplikacja webowa będzie działać w kontenerze postawionym za pomocą narzędzia Docker. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Będzie wykorzystywała Azure Networking oraz komunikowała się z bazą danych. Weryfikacja użytkowników planowana jest poprzez Azure Key Vault.  
 W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form Recognizer) do obsługi plików wejściowych oraz inne serwisy związane z Azure Networking.
 
+![Diagram serwisów](diagram_serwisow.png)
+
 ## Organizacja pracy:
 Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy. Spotkania będą odbywać się co najmniej raz w tygodniu i będą polegać na omówieniu bieżących postępów i zaplanowaniu zadań na następny sprint. Poniżej znajduje się wstępny harmonogram, który może jednak ulec zmianie w związku z niewielkim zespołem i co się z tym wiąże -- wysoką elastycznością.
 
 ### Harmonogram:
 **23.11.20 - Spotkanie organizacyjne. Opracowanie dokumentacji.**  
-25.11.20 - Rozszerzenie dokumentacji. Wstępny podział zadań.  
-30.11.20 - Zapozanie się z działaniem poszczególnych serwisów Azure używanych w projekcie.  
+25.11.20 - Rozszerzenie dokumentacji. Przygotowanie diagramu.  
+30.11.20 - Zapoznanie się z działaniem poszczególnych serwisów Azure używanych w projekcie.  
 07.12.20 - Przygotowanie środowiska - weryfikacja kosztów aplikacji, ustalenie polityk SLA.  
 **14.12.20 - Przygotowanie mock-up'u aplikacji webowej.**  
 21.12.20 - Implementacja bazy danych do przechowywania plików.  
