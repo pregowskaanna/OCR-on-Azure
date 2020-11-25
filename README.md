@@ -1,7 +1,7 @@
 # OCR-on-Azure
 
 ## Opis projektu:
-Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która będzie służyła do przetwarzania obrazów i skanów dokumentów na tekst oraz dokument cyfrowy. Aplikacja będzie umożliwiała stworzenie konta oraz zalogowanie się i przechowywanie obrazów, zeskanowanych dokumentów oraz ich cyfrowych odpowiedników.
+Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która będzie służyła do przetwarzania obrazów lub skanów dokumentów na tekst/formularz lub dokument cyfrowy. Aplikacja będzie umożliwiała stworzenie konta oraz zalogowanie się i przechowywanie obrazów, zeskanowanych dokumentów oraz ich cyfrowych odpowiedników.
 
 ## Funkcjonalności:
 - Utworzenie konta użytkownika  
@@ -10,6 +10,7 @@ Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która b�
 - Wyświetlenie tekstu rozpoznanego z pliku wejściowego  
 
 ## Architektura:
+Projekt zostanie zrealizowany z użyciem języka Python w wersji 3 i frameworka FastAPI.  
 Aplikacja webowa będzie działać w kontenerze postawionym za pomocą narzędzia Docker. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Będzie wykorzystywała Azure Networking oraz komunikowała się z bazą danych. Weryfikacja użytkowników planowana jest poprzez Azure Key Vault.  
 W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form Recognizer) do obsługi plików wejściowych oraz inne serwisy związane z Azure Networking.
 
