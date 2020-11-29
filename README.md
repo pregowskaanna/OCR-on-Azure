@@ -1,8 +1,8 @@
 # OCR-on-Azure
 
 ## Zespół:
-Anna Pręgowska (lider)
-Patrycja Szczepaniak
+Anna Pręgowska (lider)  
+Patrycja Szczepaniak  
 Łukasz Leszczyński  
 
 ## Opis projektu:
