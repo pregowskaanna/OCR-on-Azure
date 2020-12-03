@@ -16,8 +16,8 @@ Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która b�
 
 ## Architektura:
 Projekt zostanie zrealizowany z użyciem języka Python w wersji 3 i frameworka FastAPI.  
-Aplikacja webowa będzie działać w kontenerze postawionym za pomocą narzędzia Docker. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Będzie wykorzystywała Azure Networking oraz komunikowała się z bazą danych. Weryfikacja użytkowników planowana jest poprzez Azure Key Vault.  
-W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form Recognizer) do obsługi plików wejściowych oraz inne serwisy związane z Azure Networking.
+Aplikacja webowa będzie uruchamiana w serwisie Azure App Service. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Weryfikacja użytkowników planowana jest poprzez Azure Key Vault, a ich profile będą obsługiwane za pomocą Azure Active Directory.
+W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form Recognizer) do przetwarzania danych wejściowych (skanów, zdjęć) oraz Azure File Storage do przechowywania plików użytkownika.
 
 ![Diagram serwisów](diagram_serwisow.png)
 
