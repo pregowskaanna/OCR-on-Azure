@@ -32,7 +32,7 @@ Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy
 30.11.20 - Zapoznanie się z działaniem poszczególnych serwisów Azure używanych w projekcie.  
 *(6.12.20 - P3: Spotkanie z PO)*  
 07.12.20 - Przygotowanie środowiska - weryfikacja kosztów aplikacji, ustalenie polityk SLA.  
-14.12.20 - Wybór templatki front-endu.
+14.12.20 - Wybór templatki front-endu.  
 21.12.20 - Wstępna implementacja aplikacji webowej.  
 **28.12.20 - Działająca aplikacja webowa, komunikująca się z Azure Cognitive Services, zdolna do wysłania pliku wejściowego i odebrania pliku JSON.**  
 04.01.21 - Formatowanie pliku wyjściowego.  
