@@ -4,7 +4,9 @@ h11==0.11.0
 httptools==0.1.1
 pydantic==1.7.3
 python-dotenv==0.15.0
+python-multipart==0.0.5
 PyYAML==5.3.1
+six==1.15.0
 starlette==0.13.6
 typing-extensions==3.7.4.3
 uvicorn==0.13.2
