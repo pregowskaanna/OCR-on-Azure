@@ -16,10 +16,12 @@ Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która b�
 
 ## Architektura:
 Projekt zostanie zrealizowany z użyciem języka Python w wersji 3 i frameworka FastAPI.  
-Aplikacja webowa będzie uruchamiana w serwisie Azure App Service. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Obsługa profili użytkowników planowana jest poprzez Azure Active Directory powiązany ze stworzoną przez nas organizacją.
+Aplikacja webowa będzie uruchamiana w serwisie Azure App Service. Jej kod zostanie zapisany w publicznym repozytorium na stronie Github. Obsługa profili użytkowników planowana jest poprzez Azure Active Directory powiązany ze stworzoną przez nas organizacją.  
 W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form Recognizer) do przetwarzania danych wejściowych (skanów, zdjęć) oraz Azure Blob Storage do przechowywania plików użytkownika.
 
 ![Diagram serwisów](diagram_serwisow.png)
+
+Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt*.
 
 ## Organizacja pracy:
 Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy. Spotkania będą odbywać się co najmniej raz w tygodniu i będą polegać na omówieniu bieżących postępów i zaplanowaniu zadań na następny sprint. Poniżej znajduje się wstępny harmonogram, który może jednak ulec zmianie w związku z niewielkim zespołem i co się z tym wiąże - wysoką elastycznością.
@@ -36,13 +38,24 @@ Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy
 **28.12.20 - Działająca aplikacja webowa, komunikująca się z Azure Cognitive Services, zdolna do wysłania pliku wejściowego i odebrania pliku JSON.**  
 03.01.21 - Stworzenie Azure Active Directory i połączenie z aplikacją webową.  
 *(07.01.21 - P4)*  
-11.01.21 - Formatowanie pliku wyjściowego. (Ewentualnie) stworzenie front-endu aplikacji.
+11.01.21 - Formatowanie pliku wyjściowego. (Ewentualnie) stworzenie front-endu aplikacji.  
 *(14.01.21 - P5)*  
 **18.01.21 - Finalna wersja aplikacji.**  
 *(21.01.21 - P6)*  
 25.01.21 - Testowanie bezpieczeństwa aplikacji. Przygotowanie prezentacji.  
 **28.01.21 - P7: Prezentacja projektów.**  
 
+## Działanie aplikacji
+W celu uruchomienia aplikacji z poziomu użytkownika należy przejść na adres *https://appcr.azurewebsites.net*. W tym momencie pojawia się okno logowania - zalogować mogą się tylko użytkownicy z organizacji OCR-on-Azure. 
 
+![Ekran logowania](ekran_logowania.png)
 
+Dodatkowo adres *https://appcr.azurewebsites.net/docs* umożliwia zapoznanie się z dostępnym API aplikacji oraz możliwością przetestowania. Poniżej znajduje się zrzuty, pokazujące opis API.
 
+![ekran pokazujący API aplikacji](zrzut_API.png)
+![API /get/](zrzut_API_get.png)
+![API /get/search/{param}](zrzut_API_get_search.png)
+![API /post/files/](zrzut_API_post.png)
+![ekran pokazujący schematy API](zrzut_API_schematy.png)
+
+Aplikacja uruchamiana jest za pomocą pliku rozruchowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory. 
