@@ -48,14 +48,14 @@ Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy
 ## Działanie aplikacji
 W celu uruchomienia aplikacji z poziomu użytkownika należy przejść na adres *https://appcr.azurewebsites.net*. W tym momencie pojawia się okno logowania - zalogować mogą się tylko użytkownicy z organizacji OCR-on-Azure. 
 
-![Ekran logowania](ekran_logowania.png)
+![Ekran logowania](ekran_logowania.PNG)
 
 Dodatkowo adres *https://appcr.azurewebsites.net/docs* umożliwia zapoznanie się z dostępnym API aplikacji oraz możliwością przetestowania. Poniżej znajduje się zrzuty, pokazujące opis API.
 
-![ekran pokazujący API aplikacji](zrzut_API.png)
-![API /get/](zrzut_API_get.png)
-![API /get/search/{param}](zrzut_API_get_search.png)
-![API /post/files/](zrzut_API_post.png)
-![ekran pokazujący schematy API](zrzut_API_schematy.png)
+![ekran pokazujący API aplikacji](zrzut_API.PNG)
+![API /get/](zrzut_API_get.PNG)
+![API /get/search/{param}](zrzut_API_get_search.PNG)
+![API /post/files/](zrzut_API_post.PNG)
+![ekran pokazujący schematy API](zrzut_API_schematy.PNG)
 
 Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory. 
