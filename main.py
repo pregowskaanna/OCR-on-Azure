@@ -1,14 +1,11 @@
 from fastapi import FastAPI, File, UploadFile
 import requests
 
-
 app = FastAPI()
 
 class IndexerData(BaseModel):
-    username: str
-    password: str
-    email: EmailStr
-    full_name: Optional[str] = None
+    context: str
+    value: Optional[str] = None
 
 @app.get("/")
 def read_root():
@@ -16,7 +13,7 @@ def read_root():
 
 @app.get("/search/{param}")
 def read_indexer(param: str):
-    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&search="
+    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=6289AADD9ADB9709C1C19A0D962C57CA&search="
     url = url + param
     response = requests.get(url)
     return {"url": url, "response": response}
