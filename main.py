@@ -5,7 +5,7 @@ from typing import Optional
 
 
 
-api_key = os.getenv('azure_cognitive_services_api_key')
+# api_key = os.getenv('azure_cognitive_services_api_key')
 app = FastAPI()
 
 class IndexerData(BaseModel):
@@ -16,12 +16,12 @@ class IndexerData(BaseModel):
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/search/{param}")
-def read_indexer(param: str):
+# @app.get("/search/{param}")
+# def read_indexer(param: str):
 
-    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=" + api_key + "&search=" + param
-    response = requests.get(url)
-    return {"resp": response.json()}
+#     url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=" + api_key + "&search=" + param
+#     response = requests.get(url)
+#     return {"resp": response.json()}
 
 @app.post("/files/")
 async def create_upload_file(file: UploadFile = File(...)):
