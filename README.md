@@ -21,7 +21,9 @@ W ramach projektu użyte zostaną również Azure Cognitive Services (OCR, Form 
 
 ![Diagram serwisów](diagram_serwisow.png)
 
-Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt*.
+Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt*.  
+
+Używane przez nas serwisy w szczególności przy naszym wykorzystaniu są bezpłatne, natomiast SLA dla naszej aplikacji wynosi 99,6%.
 
 ## Organizacja pracy:
 Planujemy wykonać projekt przy wykorzystaniu zwinnej metodyki organizacji pracy. Spotkania będą odbywać się co najmniej raz w tygodniu i będą polegać na omówieniu bieżących postępów i zaplanowaniu zadań na następny sprint. Poniżej znajduje się wstępny harmonogram, który może jednak ulec zmianie w związku z niewielkim zespołem i co się z tym wiąże - wysoką elastycznością.
