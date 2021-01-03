@@ -20,8 +20,8 @@ def read_root():
 def read_indexer(param: str):
 
     url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=" + api_key + "&search=" + param
-#     response = requests.get(url)
-    return {"url": url}
+    response = requests.get(url)
+    return {"resp": response.json()}
 
 @app.post("/files/")
 async def create_upload_file(file: UploadFile = File(...)):
