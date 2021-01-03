@@ -13,7 +13,8 @@ def read_root():
 
 @app.get("/search/{param}")
 def read_indexer(param: str):
-    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=6289AADD9ADB9709C1C19A0D962C57CA&search="
+    api_key = azure_cognitive_services_api_key
+    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key={api_key}&search="
     url = url + param
     response = requests.get(url)
     return {"url": url, "response": response}
