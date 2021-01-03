@@ -54,10 +54,19 @@ W celu uruchomienia aplikacji z poziomu użytkownika należy przejść na adres 
 
 Dodatkowo adres *https://appcr.azurewebsites.net/docs* umożliwia zapoznanie się z dostępnym API aplikacji oraz możliwością przetestowania. Poniżej znajduje się zrzuty, pokazujące opis API.
 
+Ekran pokazujący API aplikacji:
 ![ekran pokazujący API aplikacji](zrzut_API.PNG)
+
+Ekran pokazujący przykładowe zastosowanie /get/:
 ![API /get/](zrzut_API_get.PNG)
+
+Ekran pokazujący przykładowe zastosowanie /get/search/{param}:
 ![API /get/search/{param}](zrzut_API_get_search.PNG)
+
+Ekran pokazujący przykładowe zastosowanie /post/:
 ![API /post/files/](zrzut_API_post.PNG)
+
+Ekran pokazujący schematy odpowiedzi API:
 ![ekran pokazujący schematy API](zrzut_API_schematy.PNG)
 
 Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory. 
