@@ -1,6 +1,11 @@
 from fastapi import FastAPI, File, UploadFile
 import requests, os
+from pydantic import BaseModel
+from typing import Optional
 
+
+
+api_key = os.getenv('azure_cognitive_services_api_key')
 app = FastAPI()
 
 class IndexerData(BaseModel):
@@ -13,7 +18,7 @@ def read_root():
 
 @app.get("/search/{param}")
 def read_indexer(param: str):
-    api_key = os.getenv('azure_cognitive_services_api_key)
+
     url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=" + api_key + "&search=" + param
 #     response = requests.get(url)
     return {"url": url}
