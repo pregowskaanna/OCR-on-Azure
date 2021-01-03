@@ -58,4 +58,4 @@ Dodatkowo adres *https://appcr.azurewebsites.net/docs* umożliwia zapoznanie si�
 ![API /post/files/](zrzut_API_post.png)
 ![ekran pokazujący schematy API](zrzut_API_schematy.png)
 
-Aplikacja uruchamiana jest za pomocą pliku rozruchowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory. 
+Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory. 
