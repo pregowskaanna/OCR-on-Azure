@@ -54,9 +54,9 @@ async def create_file(file: UploadFile = File(...)):
     filename = file.filename
 
     uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
-    try:
-        response = requests.put(uri_create, headers=headers)
-    except requests.exceptions.HTTPError as e:
+    #try:
+    response = requests.put(uri_create, headers=headers)
+    #except requests.exceptions.HTTPError as e:
 
     # response = upload_file(file)
     return response.raw
