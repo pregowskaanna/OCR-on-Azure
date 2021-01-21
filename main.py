@@ -4,13 +4,24 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-
 api_key = os.getenv('APPSETTING_azure_cognitive_services_api_key')
+api_version = os.getenv('APPSETTING_azure_cognitive_services_api_version')
+index_name = os.getenv('APPSETTING_azure_cognitive_services_index_name')
 app = FastAPI()
 
-class IndexerData(BaseModel):
+class Index(BaseModel):
     context: str
     value: Optional[str] = None
+        
+class Value(BaseModel):
+    score: float
+    content: str
+    metadata_storage_content_type: str
+    metadata_storage_path: str
+    language: str
+    merged_content: str
+    text: str
+    layoutText: str
 
 @app.get("/")
 def read_root():
@@ -18,9 +29,19 @@ def read_root():
 
 @app.get("/search/{param}")
 def read_indexer(param: str):
-    url = "https://ocr-a.search.windows.net/indexes/azureblob-index-2/docs?api-version=2020-06-30&api-key=" + api_key + "&search=" + param
-    response = requests.get(url)
-    return {"resp": response.json()}
+    url = "https://ocr-a.search.windows.net/indexes/" + index_name + "/docs?api-version=" + api_version + "&api-key=" + api_key + "&search=" + param
+    response = requests.get(url).json()
+    index = create_index(response)
+    value = create_value(index['value'])
+    return {"value": value[0]['text']}
+
+@app.post("/indexes/")
+def create_index(index: Index):
+    return index
+
+@app.post("/values/")
+def create_value(value: Value):
+    return value
 
 @app.post("/files/")
 async def create_upload_file(file: UploadFile = File(...)):
