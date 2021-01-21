@@ -57,7 +57,7 @@ async def create_file(file: UploadFile = File(...)):
     response = requests.put(uri_create, headers=headers)
 
     # response = upload_file(file)
-    return response
+    return response.raw
 
 async def upload_file(file: UploadFile = File(...)):
     filename = file.filename
