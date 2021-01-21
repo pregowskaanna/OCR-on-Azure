@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Header
 import requests, os
 from pydantic import BaseModel
 from typing import Optional
@@ -46,3 +46,24 @@ def create_value(value: Value):
 @app.post("/files/")
 async def create_upload_file(file: UploadFile = File(...)):
     return {"filename": file.filename}
+
+@app.put("/files/create/")
+async def create_file(file: UploadFile = File(...)):
+    headers={"x-ms-type":file,
+    "x-ms-content-length":len(file)}
+    filename = file.filename
+
+    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    response = requests.put(uri_create, headers=headers)
+
+    # response = upload_file(file)
+    return response
+
+async def upload_file(file: UploadFile = File(...)):
+    filename = file.filename
+    
+    headers={"x-ms-type":file,
+    "x-ms-content-length":len(file)}
+    uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    response = requests.put(uri_upload, headers=headers)
+    return response
