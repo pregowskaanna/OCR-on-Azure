@@ -49,7 +49,7 @@ async def create_upload_file(file: UploadFile = File(...)):
 
 @app.put("/files/create/")
 async def create_file(file: UploadFile = File(...)):
-    headers={"x-ms-type":file,
+    headers={"x-ms-type":file.file,
     "x-ms-content-length":len(bytes(file.file))}
     filename = file.filename
 
