@@ -73,7 +73,7 @@ async def upload_file(file: UploadFile = File(...)):
 
 
 @app.post("/files/uploadtest/")
-async def create_file(
+async def create_file2(
     request: Request, file: bytes = File(...), fileb: UploadFile = File(...), token: str = Form(...)
 ):
 
