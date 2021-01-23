@@ -77,22 +77,22 @@ Problem OCR jest tematem bardzo często omawianym w wielu projektach, dlatego w 
 Do naszej instancji serwisu Azure Active Directory postanowiliśmy nie wykorzystywać organizacji Politechniki Warszawskiej, do której jesteśmy przypisani, ponieważ wprowadzała dla nas wiele ograniczeń. Dlatego podczas tworzenia instancji Azure Active Directory stworzyliśmy nową organizację OCR-on-Azure. Cały proces rozpoczęliśmy od wybrania ze strony starowej portalu Azure opcję *Create a resource*, wybierając następnie serwis AAD. 
 
 Ekran pokazujący tworzenie instancji Azure Active Directory:
-![ekran pokazujący tworzenie instancji AAD]{AAD_create.PNG}
+![ekran pokazujący tworzenie instancji AAD](AAD_create.PNG)
 
 Po stworzeniu AAD przeszliśmy do ekranu naszej nowej organizacji. W tym celu przy rozwinięciu menu użytkownika w prawym górnym rogu wybraliśmy opcję *switch direction* przechodząc do organizacji *OCR-on-Azure*. Tam w zakładce .... dodaliśmy użytkowników organizacji.
 
 Ekran dodawania użytkowników do organizacji:
-![ekran dodawania użytkowników do organizacji]{AAD_users.PNG}
+![ekran dodawania użytkowników do organizacji](AAD_users.PNG)
 
 Następnie przechodząc do opcji.... dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
 
 Ekran dodawania aplikacji do organizacji:
-![ekran dodawania aplikacji do organizacji]{dodawanie_aplikacji.PNG}
+![ekran dodawania aplikacji do organizacji](dodawanie_aplikacji.PNG)
 
 Po powrocie do naszej organizacji bazowej weszliśmy w ustawienia naszej aplikacji i wybraliśmy zakładkę Authentication/Authorization, a następnie wybraliśmy opcję autentykacji poprzez serwis Azure Active Directory, uzupełniając wszystkie potrzebne informacje.  
 
 Ekran dodawania autentykacji przez serwis AAD:
-![ekran dodawania autentykacji przez AAD]{AAD_logowanie.PNG}
+![ekran dodawania autentykacji przez AAD](AAD_logowanie.PNG)
     
 
 ## Podsumowanie i wnioski
@@ -101,7 +101,4 @@ Użytkowanie platformą Azure na początku może wydawać się trudne ze względ
 W trakcie pracy nad projektem bardzo poszerzyliśmy naszą wiedzę o platformie Azure, ale w szczególności o serwisie Azure Active Directory, nad którym przede wszystkim skupiliśmy naszą uwagę. Największe trudności mieliśmy właśnie z tym serwisem ze względu na stosunkowo niewiele materiałów opisujących integrację serwisu z aplikacją, a także stworzenie nowej organizacji. Jednak na pewno były to wartościowe doświadczenia, które wiele nas nauczyły.  
 
 Praca nad projektem była dla nas ciekawym i z całą pewnością rozwijającym doświadczeniem.
-
-
-
 
