@@ -43,43 +43,44 @@ def create_index(index: Index):
 def create_value(value: Value):
     return value
 
-@app.post("/files/")
-async def create_upload_file(file: UploadFile = File(...)):
-    return {"filename": file.filename}
 
 @app.put("/files/create/")
-async def create_file(request: Request, file: UploadFile = File(...)):
-    content_length = request.headers['content-length']
-    headers={"x-ms-type":file.file,
-    "x-ms-content-length": content_length}
-    filename = file.filename
+async def create_file(request: Request, file: bytes = File(...)):
+    # content_length = request.headers['content-type']
+    import logging
+    # logging.warning(content_length)
+    # print(type(typs))
+    headers = {
+        "x-ms-type": str(file.strip().replace(b'\n', b'').replace(b'\r',b'')),
+        "x-ms-content-length": str(len(file)),
+        # "x-ms-version": ""
 
-    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    }
+
+    logging.warning(headers)
+
+    filename = 'dddssss-no-org-filename.jpg'#file.filename
+
+    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-03-25T18:15:04Z&st=2021-01-24T10:15:04Z&spr=https&sig=RPqLBc69dUglY1G6CwAgmhO4XIQyh47JU%2BA3JPwOBn4%3D"#?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
     #try:
+
     response = requests.put(uri_create, headers=headers)
+    
     #except requests.exceptions.HTTPError as e:
 
-    # response = upload_file(file)
-    return response.raw
+    response = await upload_file(filename, file)
 
-async def upload_file(file: UploadFile = File(...)):
-    filename = file.filename
+    return {}
+
+async def upload_file(filename, file: bytes = File(...)):
+    # filename = file.filename
     
-    headers={"x-ms-type":file,
-    "x-ms-content-length":len(bytes(file))}
-    uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    # headers={"x-ms-type":file,
+    # "x-ms-content-length":len(bytes(file))}
+    headers={"x-ms-type": str(file.strip().replace(b'\n', b'').replace(b'\r',b'')),
+    "x-ms-content-length": str(len(file))}
+
+    uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-03-25T18:15:04Z&st=2021-01-24T10:15:04Z&spr=https&sig=RPqLBc69dUglY1G6CwAgmhO4XIQyh47JU%2BA3JPwOBn4%3D"#?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
     response = requests.put(uri_upload, headers=headers)
     return response
 
-
-@app.post("/files/uploadtest/")
-async def create_file2(
-    file: UploadFile = File(...)
-):
-
-    filename = file.filename
-
-    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
-    response = requests.post(uri_create)
-
-    return response
