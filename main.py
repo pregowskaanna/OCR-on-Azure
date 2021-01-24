@@ -12,9 +12,9 @@ credential = DefaultAzureCredential()
 client = SecretClient(vault_url=vault_url, credential=credential)
 
 try:
-    api_key = client.get_secret("azureCognitiveServicesAPIKey")
-    api_version = client.get_secret("azureCognitiveServicesAPIVersion")
-    index_name = client.get_secret("azureCognitiveServicesIndexName")
+    api_key = client.get_secret("azureCognitiveServicesAPIKey").value
+    api_version = client.get_secret("azureCognitiveServicesAPIVersion").value
+    index_name = client.get_secret("azureCognitiveServicesIndexName").value
 except HttpResponseError as e:
     print("\nCaught an error: {0}".format(e.message))
     
