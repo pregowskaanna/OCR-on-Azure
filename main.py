@@ -1,5 +1,5 @@
-from fastapi import FastAPI, File, UploadFile
-import requests, os
+from fastapi import FastAPI, File, UploadFile, Header, Request, Form
+import requests, os, sys
 from pydantic import BaseModel
 from typing import Optional
 
@@ -46,3 +46,40 @@ def create_value(value: Value):
 @app.post("/files/")
 async def create_upload_file(file: UploadFile = File(...)):
     return {"filename": file.filename}
+
+@app.put("/files/create/")
+async def create_file(request: Request, file: UploadFile = File(...)):
+    content_length = request.headers['content-length']
+    headers={"x-ms-type":file.file,
+    "x-ms-content-length": content_length}
+    filename = file.filename
+
+    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    #try:
+    response = requests.put(uri_create, headers=headers)
+    #except requests.exceptions.HTTPError as e:
+
+    # response = upload_file(file)
+    return response.raw
+
+async def upload_file(file: UploadFile = File(...)):
+    filename = file.filename
+    
+    headers={"x-ms-type":file,
+    "x-ms-content-length":len(bytes(file))}
+    uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    response = requests.put(uri_upload, headers=headers)
+    return response
+
+
+@app.post("/files/uploadtest/")
+async def create_file2(
+    file: UploadFile = File(...)
+):
+
+    filename = file.filename
+
+    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    response = requests.post(uri_create)
+
+    return response
