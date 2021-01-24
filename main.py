@@ -11,9 +11,12 @@ vault_url = os.getenv('APPSETTING_azure_key_vault_url')
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=vault_url, credential=credential)
 
-api_key = client.get_secret("azureCognitiveServicesAPIKey")
-api_version = client.get_secret("azureCognitiveServicesAPIVersion")
-index_name = client.get_secret("azureCognitiveServicesIndexName")
+try:
+    api_key = client.get_secret("azureCognitiveServicesAPIKey")
+    api_version = client.get_secret("azureCognitiveServicesAPIVersion")
+    index_name = client.get_secret("azureCognitiveServicesIndexName")
+except HttpResponseError as e:
+    print("\nCaught an error: {0}".format(e.message))
     
 app = FastAPI()
 
