@@ -9,7 +9,7 @@ from azure.core.exceptions import HttpResponseError
 
 vault_url = os.getenv('azure_key_vault_url')
 credential = DefaultAzureCredential()
-client = SecretClient(vault_url=VAULT_URL, credential=credential)
+client = SecretClient(vault_url=vault_url, credential=credential)
 
 try:
     api_key = client.get_secret(secret.azureCognitiveServicesAPIKey)
