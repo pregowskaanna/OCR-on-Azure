@@ -7,7 +7,7 @@ from azure.identity import DefaultAzureCredential
 from azure.core.exceptions import HttpResponseError
 
 
-vault_url = os.getenv('azure_key_vault_url')
+vault_url = os.getenv('APPSETTING_azure_key_vault_url')
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=vault_url, credential=credential)
 
