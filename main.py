@@ -43,7 +43,6 @@ def create_index(index: Index):
 def create_value(value: Value):
     return value
 
-
 @app.put("/files/create/")
 async def create_file(request: Request, file: bytes = File(...)):
     # content_length = request.headers['content-type']
@@ -73,10 +72,12 @@ async def create_file(request: Request, file: bytes = File(...)):
     return {}
 
 async def upload_file(filename, file: bytes = File(...)):
+
     # filename = file.filename
     
     # headers={"x-ms-type":file,
     # "x-ms-content-length":len(bytes(file))}
+
     headers={"x-ms-type": str(file.strip().replace(b'\n', b'').replace(b'\r',b'')),
     "x-ms-content-length": str(len(file))}
 
