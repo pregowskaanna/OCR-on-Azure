@@ -63,10 +63,10 @@ Ekran pokazujący przykładowe zastosowanie /get/:
 Ekran pokazujący przykładowe zastosowanie /get/search/{param}:
 ![API /get/search/{param}](img/zrzut_API_get_search.PNG)
 
-Ekran pokazujący przykładowe zastosowanie /post/:
-![API /put/files/](img/zrzut_API_post.PNG)
+Ekran pokazujący przykładowe zastosowanie /put/:
+![API /put/files/](img/zrzut_API_put.PNG)
 
-Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety w zakładce *Configuration* - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory.  
+Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Key Vault - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory.  
 
 ## Implementacja Azure Active Directory
 Problem OCR jest tematem bardzo często omawianym w wielu projektach, dlatego w naszym postanowiliśmy skupić się przede wszystkim na serwisie Azure Active Directory.  
