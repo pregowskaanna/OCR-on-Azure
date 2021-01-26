@@ -2,11 +2,22 @@ from fastapi import FastAPI, File, UploadFile, Header, Request, Form
 import requests, os, sys
 from pydantic import BaseModel
 from typing import Optional
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
+from azure.core.exceptions import HttpResponseError
 
 
-api_key = os.getenv('APPSETTING_azure_cognitive_services_api_key')
-api_version = os.getenv('APPSETTING_azure_cognitive_services_api_version')
-index_name = os.getenv('APPSETTING_azure_cognitive_services_index_name')
+vault_url = os.getenv('APPSETTING_azure_key_vault_url')
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=vault_url, credential=credential)
+
+try:
+    api_key = client.get_secret("azureCognitiveServicesAPIKey").value
+    api_version = client.get_secret("azureCognitiveServicesAPIVersion").value
+    index_name = client.get_secret("azureCognitiveServicesIndexName").value
+except HttpResponseError as e:
+    print("\nCaught an error: {0}".format(e.message))
+    
 app = FastAPI()
 
 class Index(BaseModel):
@@ -43,44 +54,44 @@ def create_index(index: Index):
 def create_value(value: Value):
     return value
 
-# @app.post("/files/")
-# async def create_upload_file(file: UploadFile = File(...)):
-#     return {"filename": file.filename}
+@app.put("/files/create/")
+async def create_file(request: Request, file: bytes = File(...)):
+    # content_length = request.headers['content-type']
+    import logging
+    # logging.warning(content_length)
+    # print(type(typs))
+    headers = {
+        "x-ms-type": str(file.strip().replace(b'\n', b'').replace(b'\r',b'')),
+        "x-ms-content-length": str(len(file)),
+        # "x-ms-version": ""
 
-# @app.put("/files/create/")
-# async def create_file(request: Request, file: UploadFile = File(...)):
-#     content_length = request.headers['content-length']
-#     headers={"x-ms-type":file.file,
-#     "x-ms-content-length": content_length}
-#     filename = file.filename
+    }
 
-#     uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
-#     #try:
-#     response = requests.put(uri_create, headers=headers)
-#     #except requests.exceptions.HTTPError as e:
+    logging.warning(headers)
 
-#     # response = upload_file(file)
-#     return response.raw
-@app.put("/files/create/", status_code=200)
-async def upload_file(file: UploadFile = File(...)):
+    filename = 'dddssss-no-org-filename.jpg'#file.filename
+
+    uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-03-25T18:15:04Z&st=2021-01-24T10:15:04Z&spr=https&sig=RPqLBc69dUglY1G6CwAgmhO4XIQyh47JU%2BA3JPwOBn4%3D"#?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    #try:
+
+    response = requests.put(uri_create, headers=headers)
+    
+    #except requests.exceptions.HTTPError as e:
+
+    response = await upload_file(filename, file)
+
+    return {}
+
+async def upload_file(filename, file: bytes = File(...)):
+
     # filename = file.filename
     
     # headers={"x-ms-type":file,
     # "x-ms-content-length":len(bytes(file))}
-    # uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
-    # response = requests.put(uri_upload, headers=headers)
-    return {}
-    # return response
 
+    headers={"x-ms-type": str(file.strip().replace(b'\n', b'').replace(b'\r',b'')),
+    "x-ms-content-length": str(len(file))}
 
-# @app.post("/files/uploadtest/")
-# async def create_file2(
-#     file: UploadFile = File(...)
-# ):
-
-#     filename = file.filename
-
-#     uri_create = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
-#     response = requests.post(uri_create)
-
-#     return response
+    uri_upload = f"https://bfkhabfkjwhfohfejwgfkg.file.core.windows.net/personal/data/{filename}?comp=range&sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-03-25T18:15:04Z&st=2021-01-24T10:15:04Z&spr=https&sig=RPqLBc69dUglY1G6CwAgmhO4XIQyh47JU%2BA3JPwOBn4%3D"#?sv=2019-12-12&ss=bf&srt=co&sp=rwdlacx&se=2021-01-22T03:59:59Z&st=2021-01-21T19:59:59Z&spr=https&sig=8Gw3DdkeqrMecXJBmUgYAXPslIpLGApEKronGquesh4%3D"
+    response = requests.put(uri_upload, headers=headers)
+    return response
