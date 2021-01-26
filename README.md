@@ -17,9 +17,9 @@ Celem naszego projektu jest stworzenie i wdrożenie aplikacji webowej, która b�
 ## Architektura:
 Projekt został zrealizowany z użyciem języka Python w wersji 3 i frameworka FastAPI.  
 Aplikacja webowa jest uruchamiana w serwisie Azure App Service. Jej kod został zapisany w publicznym repozytorium na stronie Github. Obsługa profili użytkowników wykonana jest poprzez Azure Active Directory powiązany ze stworzoną przez nas organizacją.  
-W ramach projektu użyte zostały również Azure Cognitive Services (OCR, Form Recognizer) do przetwarzania danych wejściowych (skanów, zdjęć) oraz Azure Blob Storage do przechowywania plików użytkownika.
+W ramach projektu użyte zostały również Azure Cognitive Services (OCR, Form Recognizer) do przetwarzania danych wejściowych (skanów, zdjęć) oraz Azure Blob Storage do przechowywania plików użytkownika. Sekrety są przechowywane w instancji serwisu Key Vault.
 
-![Diagram serwisów](diagram_serwisow.png)
+![Diagram serwisów](img/diagram_serwisow.png)
 
 Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt*.  
 
@@ -44,30 +44,30 @@ Projekt został wykonany przy wykorzystaniu zwinnej metodyki organizacji pracy. 
 *(15.01.21 - P5)*  
 **22.01.21 - Finalna wersja aplikacji.**  
 *(21.01.21 - P6)*  
-23.01.21 - Testowanie bezpieczeństwa aplikacji. Przygotowanie prezentacji.  
+23.01.21 - Dodanie Key Vault. Testowanie bezpieczeństwa aplikacji. Przygotowanie prezentacji.  
 **28.01.21 - P7: Prezentacja projektów.**  
 
 ## Działanie aplikacji
 W celu uruchomienia aplikacji z poziomu użytkownika należy przejść na adres *https://appcr.azurewebsites.net*. W tym momencie pojawia się okno logowania - zalogować mogą się tylko użytkownicy z organizacji OCR-on-Azure. 
 
-![Ekran logowania](ekran_logowania.PNG)
+![Ekran logowania](img/ekran_logowania.PNG)
 
 Dodatkowo adres *https://appcr.azurewebsites.net/docs* umożliwia zapoznanie się z dostępnym API aplikacji oraz możliwością przetestowania. Poniżej znajduje się zrzuty, pokazujące opis API prezentowany przez swaggera.
 
 Ekran pokazujący API aplikacji:
-![ekran pokazujący API aplikacji](zrzut_API.PNG)
+![ekran pokazujący API aplikacji](img/zrzut_API.PNG)
 
 Ekran pokazujący przykładowe zastosowanie /get/:
-![API /get/](zrzut_API_get.PNG)
+![API /get/](img/zrzut_API_get.PNG)
 
 Ekran pokazujący przykładowe zastosowanie /get/search/{param}:
-![API /get/search/{param}](zrzut_API_get_search.PNG)
+![API /get/search/{param}](img/zrzut_API_get_search.PNG)
 
 Ekran pokazujący przykładowe zastosowanie /post/:
-![API /post/files/](zrzut_API_post.PNG)
+![API /post/files/](img/zrzut_API_post.PNG)
 
 Ekran pokazujący schematy odpowiedzi API:
-![ekran pokazujący schematy API](zrzut_API_schematy.PNG)
+![ekran pokazujący schematy API](img/zrzut_API_schematy.PNG)
 
 Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety w zakładce *Configuration* - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory.  
 
@@ -77,22 +77,22 @@ Problem OCR jest tematem bardzo często omawianym w wielu projektach, dlatego w 
 Do naszej instancji serwisu Azure Active Directory postanowiliśmy nie wykorzystywać organizacji Politechniki Warszawskiej, do której jesteśmy przypisani, ponieważ wprowadzała dla nas wiele ograniczeń. Dlatego podczas tworzenia instancji Azure Active Directory stworzyliśmy nową organizację OCR-on-Azure. Cały proces rozpoczęliśmy od wybrania ze strony starowej portalu Azure opcję *Create a resource*, wybierając następnie serwis AAD. 
 
 Ekran pokazujący tworzenie instancji Azure Active Directory:
-![ekran pokazujący tworzenie instancji AAD](AAD_create.PNG)
+![ekran pokazujący tworzenie instancji AAD](img/AAD_create.PNG)
 
 Po stworzeniu AAD przeszliśmy do ekranu naszej nowej organizacji. W tym celu przy rozwinięciu menu użytkownika w prawym górnym rogu wybraliśmy opcję *switch direction* przechodząc do organizacji *OCR-on-Azure*. Tam w zakładce .... dodaliśmy użytkowników organizacji.
 
 Ekran dodawania użytkowników do organizacji:
-![ekran dodawania użytkowników do organizacji](AAD_users.PNG)
+![ekran dodawania użytkowników do organizacji](img/AAD_users.PNG)
 
 Następnie przechodząc do opcji.... dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
 
 Ekran dodawania aplikacji do organizacji:
-![ekran dodawania aplikacji do organizacji](dodawanie_aplikacji.PNG)
+![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacji.PNG)
 
 Po powrocie do naszej organizacji bazowej weszliśmy w ustawienia naszej aplikacji i wybraliśmy zakładkę Authentication/Authorization, a następnie wybraliśmy opcję autentykacji poprzez serwis Azure Active Directory, uzupełniając wszystkie potrzebne informacje.  
 
 Ekran dodawania autentykacji przez serwis AAD:
-![ekran dodawania autentykacji przez AAD](AAD_logowanie.PNG)
+![ekran dodawania autentykacji przez AAD](img/AAD_logowanie.PNG)
     
 
 ## Podsumowanie i wnioski
