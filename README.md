@@ -79,12 +79,12 @@ Ekran pokazujący tworzenie instancji Azure Active Directory:
 Po stworzeniu AAD przeszliśmy do ekranu naszej nowej organizacji. W tym celu przy rozwinięciu menu użytkownika w prawym górnym rogu wybraliśmy opcję *switch direction* przechodząc do organizacji *OCR-on-Azure*. Tam w zakładce *Users* dodaliśmy użytkowników organizacji.
 
 Ekran dodawania użytkowników do organizacji:
-![ekran dodawania użytkowników do organizacji](img/AAD_users.PNG)
+![ekran dodawania użytkowników do organizacji](img/AAD_users.png)
 
 Następnie przechodząc do opcji *App registrations* dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
 
 Ekran dodawania aplikacji do organizacji:
-![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacja.PNG)
+![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacja.png)
 
 Po powrocie do naszej organizacji bazowej weszliśmy w ustawienia naszej aplikacji i wybraliśmy zakładkę Authentication/Authorization, a następnie wybraliśmy opcję autentykacji poprzez serwis Azure Active Directory, uzupełniając wszystkie potrzebne informacje.  
 
