@@ -21,7 +21,7 @@ W ramach projektu użyte zostały również Azure Cognitive Services (OCR, Form 
 
 ![Diagram serwisów](img/diagram_serwisow.png)
 
-Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt*.  
+Biblioteki wykorzystywane w projekcie znajdują się w pliku *requirements.txt* i były instalowane jako środowisko wirtualne.  
 
 Używane przez nas serwisy w szczególności przy naszym wykorzystaniu są bezpłatne, natomiast SLA dla naszej aplikacji wynosi 99,6%.
 
@@ -63,13 +63,10 @@ Ekran pokazujący przykładowe zastosowanie /get/:
 Ekran pokazujący przykładowe zastosowanie /get/search/{param}:
 ![API /get/search/{param}](img/zrzut_API_get_search.PNG)
 
-Ekran pokazujący przykładowe zastosowanie /post/:
-![API /post/files/](img/zrzut_API_post.PNG)
+Ekran pokazujący przykładowe zastosowanie /put/:
+![API /put/files/](img/zrzut_API_put.PNG)
 
-Ekran pokazujący schematy odpowiedzi API:
-![ekran pokazujący schematy API](img/zrzut_API_schematy.PNG)
-
-Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Azure Web Service jako sekrety w zakładce *Configuration* - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory.  
+Aplikacja uruchamiana jest za pomocą skryptu startowego *startup.sh* i postawiona na kontenerze Docker. Dane wrażliwe przechowywane są w Key Vault - nie są przechowywane jawnie. Zarządzanie użytkownikami następuje z poziomu aplikazji Azure Active Directory.  
 
 ## Implementacja Azure Active Directory
 Problem OCR jest tematem bardzo często omawianym w wielu projektach, dlatego w naszym postanowiliśmy skupić się przede wszystkim na serwisie Azure Active Directory.  
@@ -84,7 +81,7 @@ Po stworzeniu AAD przeszliśmy do ekranu naszej nowej organizacji. W tym celu pr
 Ekran dodawania użytkowników do organizacji:
 ![ekran dodawania użytkowników do organizacji](img/AAD_users.PNG)
 
-Następnie przechodząc do opcji.... dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
+Następnie przechodząc do opcji....(tu było jakieś aplikacje przedsiębiorstwa czy coś takiego...) dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
 
 Ekran dodawania aplikacji do organizacji:
 ![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacji.PNG)
