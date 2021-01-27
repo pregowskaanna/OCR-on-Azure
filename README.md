@@ -84,7 +84,7 @@ Ekran dodawania użytkowników do organizacji:
 Następnie przechodząc do opcji *App registrations* dodaliśmy naszą aplikację webową do zbioru aplikacji organizacji. Wszystkie informacje dotyczące aplikacji, które potrzebne są do dodania jej znajdują się z zakładce *Properties* w zasobie aplikacji.
 
 Ekran dodawania aplikacji do organizacji:
-![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacja.png)
+![ekran dodawania aplikacji do organizacji](img/dodawanie_aplikacja.jpg)
 
 Po powrocie do naszej organizacji bazowej weszliśmy w ustawienia naszej aplikacji i wybraliśmy zakładkę Authentication/Authorization, a następnie wybraliśmy opcję autentykacji poprzez serwis Azure Active Directory, uzupełniając wszystkie potrzebne informacje.  
 
